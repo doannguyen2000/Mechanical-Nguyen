@@ -15,19 +15,18 @@ return new class extends Migration
     {
         Schema::create('cong_viec_nhan_vien', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cong_viec_id')->constrained('cong_viecs')->onDelete('cascade');
-            $table->foreignId('nhan_vien_id')->constrained('nhan_viens')->onDelete('cascade');
+            $table->foreignId('cong_viec_id')
+                ->constrained('cong_viec')
+                ->onDelete('cascade');
+            $table->foreignId('nhan_vien_id')
+                ->constrained('nhan_vien')
+                ->onDelete('cascade');
             $table->timestamp('thoi_gian_bat_dau')->nullable();
             $table->timestamp('thoi_gian_ket_thuc')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('cong_viec_nhan_vien');
