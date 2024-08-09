@@ -72,6 +72,11 @@
     margin-right: 10px;
 }
 
+.login-box {
+    max-width: 470px;
+}
+
+
 @media (max-width: 768px) {
     .sidebar-box,
     .sidebar {

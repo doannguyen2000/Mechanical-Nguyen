@@ -15,15 +15,23 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto sidebar-box">
-                <x-sidebar />
-            </div>
-            <div class="col flex-grow-1 content-box p-0" style="background-color: #e9ecef;">
-                <x-content.header />
-                <div class="container-fluid content border rounded p-1 md-0 pt-3">
+            @auth
+                <div class="col-auto sidebar-box">
+                    <x-sidebar />
+                </div>
+
+                <div class="col flex-grow-1 content-box p-0" style="background-color: #e9ecef;">
+                    <x-content.header />
+                    <div class="container-fluid content border rounded p-1 md-0 pt-3">
+                        @yield('content')
+                    </div>
+                </div>
+            @else
+                <x-content.header-login />
+                <div class="container-fluid content-login-box p-5 ">
                     @yield('content')
                 </div>
-            </div>
+            @endauth
         </div>
     </div>
 
